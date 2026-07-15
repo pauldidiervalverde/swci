@@ -1,0 +1,52 @@
+/* ==========================================================
+   USUARIO MODAL
+========================================================== */
+.usuario-modal__info,
+.usuario-modal__password {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+.usuario-modal__info strong,
+.usuario-modal__password strong {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+}
+.usuario-modal__info span,
+.usuario-modal__password span {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+}
+/* ==========================================================
+   CONTRASEÑA
+========================================================== */
+.usuario-modal__password {
+  background: rgba(240, 188, 16, 0.08);
+  border-color: var(--color-secondary);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+.usuario-modal__password strong {
+  color: var(--color-primary);
+}
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+@media (max-width: 768px) {
+  .usuario-modal__info,
+  .usuario-modal__password {
+    padding: var(--space-md);
+  }
+}
+@media (max-width: 500px) {
+  .usuario-modal__info,
+  .usuario-modal__password {
+    padding: var(--space-sm);
+  }
+}

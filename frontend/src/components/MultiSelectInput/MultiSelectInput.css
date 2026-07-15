@@ -1,0 +1,109 @@
+.multi-select {
+  width: 100%;
+}
+.multi-select__label {
+  display: block;
+  margin-bottom: 6px;
+  padding-left: 16px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium);
+}
+.multi-select__wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: var(--input-height);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  transition: var(--transition-fast);
+  overflow: hidden;
+}
+.multi-select__wrapper:focus-within {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 4px var(--focus-secondary);
+}
+.multi-select__input {
+  flex: 1;
+  width: 100%;
+  height: var(--input-height);
+  color: var(--color-black);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-bold);
+  padding: 0 14px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.multi-select__input::placeholder {
+  color: var(--color-text-muted);
+}
+.multi-select__input:disabled {
+  cursor: not-allowed;
+}
+.multi-select__input--error {
+  color: var(--color-danger);
+}
+.multi-select__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 10px;
+  flex-shrink: 0;
+}
+.multi-select__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 24px;
+  /* padding: 0 6px; */
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-bold);
+  transition: var(--transition-fast);
+  user-select: none;
+}
+.multi-select__option--selected {
+  background: var(--color-secondary);
+  color: var(--color-black);
+}
+.multi-select__option:disabled {
+  cursor: not-allowed;
+}
+.multi-select__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  transition: var(--transition-fast);
+}
+.multi-select__clear:hover:not(:disabled) {
+  background: rgba(208, 220, 38, 0.8);
+}
+.multi-select__clear:disabled {
+  cursor: not-allowed;
+}
+.multi-select__error {
+  display: block;
+  margin-top: 6px;
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+}
+/* @media (max-width: 480px) {
+  .multi-select__wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .multi-select__actions {
+    justify-content: center;
+    padding: 8px;
+    border-top: 1px solid var(--color-border);
+  }
+} */

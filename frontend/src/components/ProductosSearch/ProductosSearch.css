@@ -1,0 +1,28 @@
+.productos-search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+  /* margin-bottom: var(--space-sm); */
+}
+.productos-search__item {
+  flex: 1;
+  min-width: 200px;
+}
+.productos-search__item--wide {
+  flex: 2;
+}
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 900px) {
+  .productos-search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .productos-search__item,
+  .productos-search__item--wide {
+    width: 100%;
+    min-width: 100%;
+  }
+}

@@ -1,0 +1,61 @@
+/* ClienteForm.css */
+.cliente-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cliente-form__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--space-md);
+}
+
+.cliente-form__wide {
+  grid-column: span 1;
+}
+.cliente-form__div {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-md);
+}
+
+.cliente-form__textarea {
+  height: 90px !important;
+  padding: 10px 14px !important;
+  resize: none;
+  font-family: var(--font-family);
+}
+
+.cliente-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-md);
+}
+
+.cliente-form__btn-submit {
+  background-color: var(--color-secondary); /* Dorado #f0bc10 */
+  color: var(--color-black);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-bold);
+  height: var(--input-height);
+  padding: 0 var(--space-2xl);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: filter var(--transition-fast);
+}
+
+.cliente-form__btn-submit:hover {
+  filter: brightness(1.1);
+}
+
+/* Tablets y pantallas superiores */
+@media (min-width: 600px) {
+  .cliente-form__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cliente-form__wide {
+    grid-column: span 2;
+  }
+}

@@ -1,0 +1,139 @@
+/* ==========================================================
+   SELECTION CARDS
+========================================================== */
+.selection-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.selection-cards__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+}
+.selection-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+/* ==========================================================
+   CARD
+========================================================== */
+.selection-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  width: 100%;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast),
+    background var(--transition-fast);
+  text-align: left;
+}
+.selection-card:hover:not(:disabled) {
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.selection-card--selected {
+  border-color: var(--color-secondary);
+  background: rgba(240, 188, 16, 0.08);
+  box-shadow: var(--shadow-md);
+}
+.selection-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+/* ==========================================================
+   INDICADOR
+========================================================== */
+.selection-card__indicator {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+/* ==========================================================
+   CHECKBOX
+========================================================== */
+.selection-card__checkbox {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 2px solid var(--color-border);
+  font-size: 13px;
+  font-weight: var(--font-bold);
+  color: white;
+  transition: all var(--transition-fast);
+}
+.selection-card__checkbox--selected {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+/* ==========================================================
+   RADIO
+========================================================== */
+.selection-card__radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.selection-card__radio--selected {
+  border-color: var(--color-secondary);
+}
+.selection-card__radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+}
+/* ==========================================================
+   CONTENIDO
+========================================================== */
+.selection-card__content {
+  flex: 1;
+  min-width: 0;
+}
+.selection-card__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  line-height: 1.3;
+}
+.selection-card__description {
+  margin-top: 4px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+/* ==========================================================
+   TABLET
+========================================================== */
+@media (max-width: 768px) {
+  .selection-cards__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* ==========================================================
+   MOBILE
+========================================================== */
+@media (max-width: 500px) {
+  .selection-cards__grid {
+    grid-template-columns: 1fr;
+  }
+  .selection-card {
+    padding: 14px;
+  }
+}

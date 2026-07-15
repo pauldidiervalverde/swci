@@ -1,0 +1,18 @@
+.product-import-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.product-import-modal__upload {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.product-import-modal__upload input[type="file"] {
+  width: 100%;
+}
+.product-import-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}

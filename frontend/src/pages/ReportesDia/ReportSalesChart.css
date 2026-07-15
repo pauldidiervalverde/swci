@@ -1,0 +1,171 @@
+.analytics-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-xl);
+  width: 100%;
+  font-family: var(--font-family);
+  margin-bottom: var(--space-xl);
+}
+
+.chart-main-card,
+.payment-distribution-column {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-card__title {
+  margin: 0;
+  font-size: var(--font-size-md);
+  color: var(--color-primary);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chart-card__subtitle {
+  margin: var(--space-xs) 0 var(--space-lg) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Caja contenedora con borde dorado de tu sistema */
+.highlighted-box {
+  border: 2px solid var(--color-secondary) !important;
+  box-shadow: var(--shadow-md) !important;
+  background: var(--color-surface);
+}
+
+.payment-tiles-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+/* Fondo aclarado y suavizado para las sub-tarjetas laterales */
+.payment-tile-row.custom-row {
+  background: #fbfbfc !important; /* Blanco tiza limpio */
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.payment-tile-row.custom-row:hover {
+  transform: translateX(4px);
+  border-color: var(--color-primary);
+  background: var(--color-surface) !important;
+}
+
+/* Contenedores circulares de los iconos */
+.payment-tile-row__icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  background: var(--color-surface);
+}
+
+/* Colores pastel de fondo según el tipo de caja */
+.tile-efectivo .payment-tile-row__icon-wrapper {
+  background: rgba(22, 163, 74, 0.06) !important;
+}
+.tile-qr .payment-tile-row__icon-wrapper {
+  background: rgba(31, 39, 56, 0.06) !important;
+}
+.tile-tarjeta .payment-tile-row__icon-wrapper {
+  background: rgba(37, 99, 233, 0.06) !important;
+}
+
+.payment-tile-row__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Forzar tipografía en negro puro e intensivo */
+.text-black-deep {
+  color: #000000 !important;
+  font-weight: var(--font-bold) !important;
+}
+
+.payment-tile-row__label {
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.5px;
+}
+
+.payment-tile-row__value {
+  font-size: var(--font-size-xl) !important;
+  font-weight: var(--font-black) !important;
+}
+
+/* Tooltip Analítico Oscuro con Borde Dorado */
+.custom-chart-tooltip {
+  background: #19191b !important;
+  border: 1px solid var(--color-secondary) !important;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  color: var(--color-white);
+  box-shadow: var(--shadow-lg);
+}
+
+.tooltip-time {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-secondary);
+}
+
+.tooltip-divider {
+  height: 1px;
+  background: var(--color-text-muted);
+  margin: var(--space-sm) 0;
+  opacity: 0.2;
+}
+
+.tooltip-row {
+  margin: var(--space-xs) 0;
+  font-size: var(--font-size-sm);
+}
+
+.tooltip-method-tag {
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-xxs);
+  text-transform: uppercase;
+}
+
+.chart-skeleton {
+  height: 290px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+.empty-state {
+  justify-content: center;
+  border-style: dashed !important;
+  opacity: 0.6;
+}
+
+/* Soporte responsivo móvil */
+@media (max-width: 850px) {
+  .analytics-layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,13 @@
+import { Router } from "express";
+import * as controller from "./usuarios.controller.js";
+import { authMiddleware } from "../../middlewares/auth.middleware.js";
+const router = Router();
+router.use(authMiddleware);
+router.get("/", controller.listar);
+router.get("/:id", controller.obtener);
+router.post("/", controller.crear);
+router.put("/:id", controller.actualizar);
+router.patch("/:id/estado", controller.estado);
+router.patch("/:id/password", controller.password);
+router.patch("/:id/reset", controller.resetear);
+export default router;

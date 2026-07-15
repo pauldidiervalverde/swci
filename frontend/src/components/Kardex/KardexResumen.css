@@ -1,0 +1,45 @@
+.kardex-resumen-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.kardex-resumen-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-semibold);
+  /* font-semibold: var(--font-semibold); */
+  color: var(--color-primary);
+  margin: 0 0 var(--space-lg) 0;
+}
+
+.kardex-resumen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+}
+
+.kardex-resumen-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.kardex-resumen-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-light);
+  font-weight: var(--font-medium);
+}
+
+.kardex-resumen-value {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+}
+
+.kardex-resumen-value.font-medium {
+  font-weight: var(--font-medium);
+}

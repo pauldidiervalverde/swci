@@ -1,0 +1,43 @@
+/* Clientes.css */
+.clientes__header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+}
+
+.clientes__btn-add {
+  background-color: var(--color-secondary);
+  color: var(--color-black);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-bold);
+  height: var(--input-height);
+  padding: 0 var(--space-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: filter var(--transition-fast);
+}
+
+.clientes__btn-add:hover {
+  filter: brightness(1.1);
+}
+
+.clientes__btn-edit {
+  background: transparent;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.clientes__btn-edit:hover {
+  background: var(--color-secondary);
+  color: var(--color-black);
+}

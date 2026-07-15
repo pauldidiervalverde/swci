@@ -1,0 +1,361 @@
+/* ==========================================================================
+   ESTILOS EN PANTALLA (VISTA PREVIA DE LA NOTA)
+   ========================================================================== */
+
+.nota-venta-container {
+  padding: var(--container-padding);
+  background-color: var(--color-background);
+  display: block;
+}
+
+.nota-venta-actions {
+  margin-bottom: var(--space-lg);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-print {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: none;
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-family);
+  font-weight: var(--font-bold);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.btn-print:hover {
+  background-color: var(--color-secondary-light);
+}
+
+/* Contenedor simulando Media Hoja Carta en Pantalla (Horizontal corta) */
+.invoice-box-half-page {
+  width: 216mm;
+  height: 140mm; /* Mitad exacta del alto de una hoja carta (279mm / 2) */
+  margin: 0 auto;
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-family);
+  color: var(--color-text);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Mantiene el pie siempre abajo */
+}
+
+/* Tipografías y Encabezado */
+.invoice-header {
+  display: table;
+  width: 100%;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: var(--space-sm);
+}
+
+.company-info,
+.invoice-meta {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.company-name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.company-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.invoice-meta {
+  text-align: right;
+}
+
+.invoice-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-black);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-xs) 0;
+  letter-spacing: 1px;
+}
+
+.invoice-code,
+.invoice-number {
+  font-size: var(--font-size-xs);
+  margin: 0;
+}
+
+/* Sección Cliente */
+.invoice-customer-section {
+  display: table;
+  width: 100%;
+  margin-top: var(--space-md);
+  padding: var(--space-sm);
+  background-color: var(--color-background);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.customer-col {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+
+.customer-col p {
+  margin: var(--space-xs) 0;
+}
+
+.badge-pago {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 2px var(--space-sm);
+  font-size: var(--font-size-xxs);
+  font-weight: var(--font-bold);
+  border-radius: var(--radius-sm);
+}
+
+/* Tabla de Detalles (Maximizada para 10 filas en este espacio) */
+.invoice-details-section {
+  flex-grow: 1;
+  margin-top: var(--space-md);
+  overflow: hidden;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-xs); /* Letra compacta */
+}
+
+.invoice-table th {
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  text-align: left;
+  padding: 6px var(--space-sm);
+  font-weight: var(--font-semibold);
+}
+
+.invoice-table td {
+  padding: 5px var(--space-sm); /* Padding compacto para albergar los 10 items sin desborde */
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.product-desc {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-bold);
+  display: block;
+}
+
+.product-specs {
+  font-size: var(--font-size-xxs);
+  color: var(--color-text);
+}
+
+/* Pie de Nota y Totales */
+.invoice-footer {
+  display: table;
+  width: 100%;
+  border-top: 1px solid var(--color-primary);
+  padding-top: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.footer-obs,
+.footer-totals {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.footer-obs {
+  width: 60%;
+  font-size: var(--font-size-xxs);
+  color: var(--color-text-light);
+}
+
+.footer-totals {
+  width: 40%;
+}
+
+.total-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.total-label {
+  font-weight: var(--font-black);
+  font-size: var(--font-size-sm);
+}
+
+.total-amount {
+  font-weight: var(--font-black);
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+}
+
+.thanks-message {
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-sm);
+  font-style: italic;
+}
+
+/* Utilidades de alineación */
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+/* ==========================================================================
+   CONFIGURACIÓN REGLAS DE IMPRESIÓN (@media print)
+   ========================================================================== */
+
+@media print {
+  /* 1. Configurar página a tamaño Carta e indicarle márgenes cero al navegador */
+  @page {
+    size: letter portrait; /* Mantener la hoja en vertical, imprimiremos en la mitad superior */
+    margin: 0;
+  }
+
+  /* 2. Ocultar absolutamente todo lo que tenga la clase 'no-print' (Navegación, Botones, etc) */
+  body * {
+    visibility: hidden;
+  }
+
+  /* 3. Hacer visible únicamente nuestra caja de nota de venta */
+  .invoice-box-half-page,
+  .invoice-box-half-page * {
+    visibility: visible;
+  }
+
+  /* 4. Forzar posicionamiento exacto arriba a la izquierda sin afectar la visualización web */
+  .invoice-box-half-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 216mm; /* Ancho total hoja carta */
+    height: 139mm; /* Forzamos el límite estricto de la mitad de hoja */
+    padding: 10mm;
+    border: none; /* Quitamos bordes y sombras decorativas */
+    box-shadow: none;
+    background: transparent;
+  }
+
+  /* Optimizar renderizado de colores en impresión */
+  .invoice-table th {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #111111 !important;
+    color: #ffffff !important;
+  }
+
+  .invoice-customer-section {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #f5f6f8 !important;
+  }
+}
+/* Mensajes de carga o error */
+.nota-venta-mensaje {
+  padding: var(--space-2xl);
+  text-align: center;
+  font-family: var(--font-family);
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+}
+
+/* Botón para regresar a la tabla de ventas */
+.btn-back {
+  background-color: var(--color-white);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-right: var(--space-sm);
+  transition: var(--transition-fast);
+}
+
+.btn-back:hover {
+  background-color: var(--color-background);
+}
+
+/* Modificación del contenedor de datos de la empresa */
+.company-info {
+  display: table-cell;
+  vertical-align: middle; /* Alinea verticalmente el logo con el texto */
+}
+
+/* Envoltura interna flexible (solo afecta pantallas y motores de impresión modernos) */
+.company-info {
+  display: inline-flex;
+  align-items: center;
+  gap: var(
+    --space-md
+  ); /* Separa la imagen de los textos usando tus variables */
+}
+
+/* Estilos de la imagen del logo */
+.company-logo {
+  border-radius: 4px;
+  /*width: 20mm; /* Tamaño equilibrado respecto al alto del header de media hoja */
+  width: 50mm;
+  object-fit: contain; /* Evita que la imagen se deforme o estire */
+  /* filter: brightness(0.7); */
+  background-color: transparent;
+}
+
+.company-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Asegurar que la imagen se imprima correctamente */
+@media print {
+  .company-logo {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    display: block !important;
+  }
+}
+/* Nombre del producto destacado en la nota de venta */
+.invoice-prod-desc {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+/* Columna de especificaciones en una sola línea elegante */
+.invoice-prod-specs {
+  font-size: var(
+    --font-size-xs
+  ); /* Tamaño de 10px para que mantenga la fila delgada */
+  color: var(--color-text-light);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+}
+
+/* Ajuste preventivo para las celdas de la nota de venta */
+.invoice-table td {
+  padding: 5px var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}

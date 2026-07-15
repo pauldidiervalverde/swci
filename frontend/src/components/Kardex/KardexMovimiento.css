@@ -1,0 +1,135 @@
+.kardex-movimiento {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  padding: 22px 0 28px 0;
+}
+.kardex-movimiento:last-child {
+  padding-bottom: 0;
+}
+.kardex-movimiento__linea {
+  position: absolute;
+  left: 12px;
+  top: 28px;
+  bottom: -18px;
+  width: 2px;
+  background: #d7dce5;
+}
+.kardex-movimiento:last-child .kardex-movimiento__linea {
+  display: none;
+}
+.kardex-movimiento__icono {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.kardex-movimiento.entrada .kardex-movimiento__icono {
+  color: var(--color-success);
+}
+.kardex-movimiento.salida .kardex-movimiento__icono {
+  color: var(--color-danger);
+}
+.kardex-movimiento__contenido {
+  flex: 1;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 20px;
+  transition: 0.25s;
+}
+.kardex-movimiento__contenido:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.kardex-movimiento__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+.kardex-movimiento__fecha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.kardex-movimiento__tipo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  border-radius: 30px;
+  padding: 6px 14px;
+}
+.kardex-movimiento__tipo.entrada {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--color-success);
+}
+.kardex-movimiento__tipo.salida {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--color-danger);
+}
+.kardex-movimiento__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.kardex-movimiento__grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kardex-movimiento__grid label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.kardex-movimiento__grid span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+}
+.valor-entrada {
+  color: var(--color-success);
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+.valor-salida {
+  color: var(--color-danger);
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+.saldo strong {
+  font-weight: 700;
+}
+.kardex-movimiento__observacion {
+  margin-top: 18px;
+  border-top: 1px dashed #d8d8d8;
+  padding-top: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  font-size: 13px;
+}
+@media (max-width: 900px) {
+  .kardex-movimiento__cabecera {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .kardex-movimiento__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,82 @@
+.modal-overlay {
+  /* CAMBIO CLAVE: Se posiciona absolutamente respecto al contenedor padre (pág. Productos, Categorías, etc.) */
+  /*position: absolute;
+  inset: 0;*/
+  position: fixed;
+  /* Espacio reservado para que no tape el menú ni la cabecera */
+  top: var(--header-height); /* Alto de tu Header */
+  left: var(--sidebar-width); /* Ancho de tu Sidebar */
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: var(--z-modal);
+}
+.modal {
+  width: 100%;
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  /* Controla que el modal nunca sea más alto que el contenedor que lo aloja */
+  max-height: calc(100% - 40px);
+  overflow: hidden;
+  z-index: var(--z-modal);
+}
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.modal__body {
+  padding: 18px;
+  overflow-y: auto;
+  /* CAMBIO IMPORTANTE PARA EL DATATABLE INTERNO: */
+  overflow-x: auto; /* Permite scroll horizontal local si la tabla interna es muy ancha */
+  flex: 1;
+}
+/* Scroll moderno */
+.modal__body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; /* Para el scroll horizontal de tablas */
+}
+.modal__body::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 999px;
+}
+.modal__body::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+/* CONFIGURACIÓN DE TAMAÑOS RESPONSIVOS */
+/* Se adaptan automáticamente al espacio disponible usando width: 90% en móviles */
+.modal--small {
+  width: 90%;
+  max-width: 500px;
+}
+.modal--large {
+  width: 95%; /* Toma casi todo el ancho del Outlet disponible */
+  max-width: 1140px; /* Tamaño ideal para DataTables masivos con muchas columnas */
+  height: 95%;
+}
+/* Ajuste automático para pantallas pequeñas */
+@media (max-width: 768px) {
+  .modal-overlay {
+    left: 0; /* Elimina el espacio del sidebar en móviles */
+    padding: 10px;
+  }
+  .modal {
+    max-height: calc(100% - 20px);
+    border-radius: var(--radius-lg);
+  }
+  .modal--large,
+  .modal--small {
+    width: 100%; /* En móviles ocupan todo el ancho permitido por el padding */
+  }
+}

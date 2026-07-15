@@ -1,0 +1,94 @@
+.producto-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  /* overflow: hidden; */
+  animation: productoPanelShow 0.3s ease both;
+
+  transform-origin: top center;
+}
+.producto-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-border);
+  background: #fafafa;
+}
+.producto-panel__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+  line-height: 1.2;
+}
+.producto-panel__subtitle {
+  margin-top: 4px;
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+}
+.producto-panel__body {
+  padding: 24px;
+}
+.producto-panel__actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .producto-panel__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+/* =========================
+   FORMULARIO n COLUMNAS
+========================= */
+.producto-panel .modal-form__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: var(--space-lg);
+}
+.producto-panel .modal-form__field--double {
+  grid-column: span 2;
+}
+.producto-panel .modal-form__field--full {
+  grid-column: 1 / -1;
+}
+/* =========================
+   ANIMACIÓN
+========================= */
+@keyframes productoPanelShow {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) scaleY(0.95);
+  }
+
+  40% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1280px) {
+  .producto-panel .modal-form__grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+  .producto-panel .modal-form__field--double {
+    grid-column: 1 / -1;
+  }
+}
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 1023px) {
+  .producto-panel {
+    display: none;
+  }
+}

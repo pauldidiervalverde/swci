@@ -1,0 +1,67 @@
+.import-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+}
+.import-summary-cards__card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  box-shadow: var(--shadow-sm);
+  gap: 8px;
+  transition: var(--transition-fast);
+}
+/* .import-summary-cards__card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+} */
+.import-summary-cards__value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-bold);
+  line-height: 1;
+}
+.import-summary-cards__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-light);
+}
+/* =========================
+   COLORES
+========================= */
+.import-summary-cards__card--total .import-summary-cards__value {
+  color: var(--color-info);
+}
+.import-summary-cards__card--success .import-summary-cards__value {
+  color: var(--color-success);
+}
+.import-summary-cards__card--warning .import-summary-cards__value {
+  color: var(--color-warning);
+}
+.import-summary-cards__card--duplicate .import-summary-cards__value {
+  color: var(--color-null);
+}
+.import-summary-cards__card--danger .import-summary-cards__value {
+  color: var(--color-danger);
+}
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+  .import-summary-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .import-summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .import-summary-cards {
+    grid-template-columns: 1fr;
+  }
+}

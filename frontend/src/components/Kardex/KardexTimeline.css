@@ -1,0 +1,139 @@
+.kardex-tl-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.kardex-tl-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.kardex-tl-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.kardex-tl-badge-count {
+  font-size: var(--font-size-xs);
+  background-color: var(--color-background);
+  color: var(--color-text-muted);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-xl);
+  font-weight: var(--font-medium);
+}
+
+.kardex-tl-responsive-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.kardex-tl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+
+.kardex-tl-th {
+  padding: var(--space-md);
+  border-bottom: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-weight: var(--font-semibold);
+  background-color: var(--color-background);
+}
+
+.kardex-tl-tr {
+  border-bottom: 1px solid #f0f1f3;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.kardex-tl-tr:hover {
+  background-color: var(--color-background);
+}
+
+.kardex-tl-td {
+  padding: var(--space-lg) var(--space-md);
+  vertical-align: middle;
+}
+
+.kardex-tl-th.text-right,
+.kardex-tl-td.text-right {
+  text-align: right;
+}
+
+.kardex-tl-doc-code {
+  font-family: monospace;
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  background-color: #eaecee;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.kardex-tl-badge-nature {
+  padding: 4px var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-bold);
+  display: inline-block;
+}
+
+.kardex-tl-badge-nature.entrada {
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--color-success);
+}
+
+.kardex-tl-badge-nature.salida {
+  background-color: rgba(220, 38, 38, 0.1);
+  color: var(--color-danger);
+}
+
+.kardex-tl-client-name {
+  font-weight: var(--font-medium);
+}
+
+.kardex-tl-subtext-user {
+  font-size: var(--font-size-xxs);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.text-success {
+  color: var(--color-success);
+}
+.text-danger {
+  color: var(--color-danger);
+}
+.text-muted {
+  color: var(--color-text-muted);
+}
+.font-bold {
+  font-weight: var(--font-bold);
+}
+.primary-color {
+  color: var(--color-primary);
+}
+
+.kardex-tl-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl);
+  color: var(--color-text-muted);
+  gap: var(--space-sm);
+}
+
+.kardex-tl-empty-icon {
+  opacity: 0.5;
+}

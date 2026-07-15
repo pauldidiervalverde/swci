@@ -1,0 +1,63 @@
+.marcas {
+  position: relative; /* Atrapa al modal aquí dentro */
+  width: 100%;
+  height: 100%; /* Asegúrate de que use el alto provisto por el Outlet */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+/* =========================
+   FILTROS
+========================= */
+.marcas__filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-sm);
+}
+.marcas__item {
+  flex: 1;
+  min-width: 200px;
+}
+.marcas__item--wide {
+  flex: 2;
+}
+/* =========================
+   BOTÓN NUEVO
+========================= */
+.marcas__new-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  background: var(--color-secondary);
+  color: var(--color-black);
+  padding: 0 18px;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-semibold);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+.marcas__new-button:hover {
+  background: var(--color-secondary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .marcas__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .marcas__new-button {
+    width: 100%;
+  }
+}

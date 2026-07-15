@@ -1,0 +1,117 @@
+.select-field {
+  width: 100%;
+}
+.select-field__label {
+  display: block;
+  margin-bottom: 6px;
+  padding-left: 16px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium);
+}
+/* Contenedor relativo para posicionar el dropdown de manera absoluta */
+.select-field__custom-container {
+  position: relative;
+  width: 100%;
+}
+/* Modificación a tu input base para que se comporte como un botón flex */
+.select-field__input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  height: var(--input-height);
+  color: var(--color-black);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-bold);
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: white;
+  outline: none;
+  transition: var(--transition-fast);
+}
+/* Estado Focus y Estado Abierto unificados */
+.select-field__input:focus,
+.select-field__custom-container.open .select-field__input {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 4px var(--focus-secondary);
+}
+.select-field__input:disabled {
+  background: #f5f5f5;
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+.select-field__input--error {
+  border-color: var(--color-danger);
+}
+.select-field__input--error:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
+}
+/* Estilo para mitigar el grosor del texto si no hay nada seleccionado */
+.select-field__placeholder-text {
+  color: var(--color-text-light);
+  font-weight: var(--font-regular);
+}
+/* --- LA FLECHA PERSONALIZADA --- */
+.select-field__arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--color-black);
+  transition: transform var(--transition-fast);
+}
+/* Rotación elegante al abrir */
+.select-field__custom-container.open .select-field__arrow {
+  transform: rotate(180deg);
+}
+/* --- EL NUEVO DESPLEGABLE ESTILIZADO --- */
+.select-field__dropdown {
+  position: absolute;
+  top: calc(100% + 2px); /* Pequeña separación del input */
+  left: 0;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--radius-md); /* Conserva tus bordes curvos abajo */
+  box-shadow: var(--shadow-xl); /* Tu sombra suave configurada */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 3000;
+  max-height: 200px; /* Previene cajas gigantes si tienes muchas opciones */
+  overflow-y: auto;
+}
+.select-field__dropdown::-webkit-scrollbar-track {
+  /* background: transparent;  */
+  border-radius: 0 0 var(--radius-xl) 0; /* Curva solo la esquina inferior derecha */
+}
+
+/* Items del desplegable */
+.select-field__dropdown-item {
+  padding: 8px 16px;
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  font-weight: var(--font-regular);
+  cursor: pointer;
+  transition: background var(--transition-slow);
+}
+/* Efecto hover */
+.select-field__dropdown-item:hover {
+  background-color: var(--color-secondary);
+}
+/* Opción activa / seleccionada */
+.select-field__dropdown-item.active {
+  background-color: var(--color-secondary); /* Fondo sutil amarillo */
+  color: var(--color-primary-light);
+  font-weight: var(--font-bold);
+}
+.select-field__error {
+  display: block;
+  margin-top: 6px;
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+}

@@ -1,0 +1,19 @@
+.report-summary-clean {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* .report-summary__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+}
+
+/* Optimización para que en celulares de 400px entren cómodamente en bloques de 1 columna */
+@media (max-width: 480px) {
+  .report-summary__grid {
+    grid-template-columns: 1fr;
+  }
+}

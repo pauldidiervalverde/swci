@@ -1,0 +1,373 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+model Rol {
+  id          Int      @id @default(autoincrement())
+  nombre      String   @unique @db.VarChar(50)
+  descripcion String?  @db.VarChar(200)
+  estado      Boolean  @default(true)
+  usuarios    Usuario[]
+  permisos    PermisoRol[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@map("roles")
+}
+model Tienda {
+  id           Int      @id @default(autoincrement())
+  nombre       String   @unique @db.VarChar(100)
+  abreviatura  String   @unique @db.VarChar(5)
+  descripcion  String?  @db.VarChar(200)
+  imagen       String?  @db.VarChar(500)
+  estado       Boolean  @default(true)
+  usuarios     UsuarioTienda[]
+  categorias    Categoria[]
+  marcas        Marca[]
+  productos     Producto[]
+  ingresos     Ingreso[]
+  ventas       Venta[]
+  salidas     Salida[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  @@map("tiendas")
+}
+model Usuario {
+  id          Int      @id @default(autoincrement())
+  rolId       Int
+  nombre      String   @db.VarChar(150)
+  telefono    String?  @db.VarChar(30)
+  direccion   String?  @db.VarChar(250)
+  imagen      String?  @db.VarChar(500)
+  correo      String?  @db.VarChar(250)
+  observacion String?  @db.Text
+  usuario     String   @unique @db.VarChar(50)
+  password    String
+  estado      Boolean  @default(true)
+  rol         Rol      @relation(fields: [rolId], references: [id])
+  tiendas     UsuarioTienda[]
+  ingresos    Ingreso[]
+  ventas      Venta[]
+  movimientos MovimientoInventario[]
+  salidas     Salida[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@map("usuarios")
+}
+model UsuarioTienda {
+  id Int @id @default(autoincrement())
+  usuarioId Int
+  tiendaId Int
+  estado Boolean @default(true)
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
+  tienda  Tienda  @relation(fields: [tiendaId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([usuarioId, tiendaId])
+  @@map("usuario_tiendas")
+}
+model Modulo {
+  id          Int      @id @default(autoincrement())
+  nombre      String   @unique @db.VarChar(100)
+  ruta        String   @db.VarChar(150)
+  icono       String?  @db.VarChar(100)
+  orden       Int      @default(1)
+  estado      Boolean  @default(true)
+  descripcion String?  @db.VarChar(150)
+  grupo       String   @db.VarChar(50)
+  permisos    PermisoRol[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@map("modulos")
+}
+model PermisoRol {
+  id Int @id @default(autoincrement())
+  rolId Int
+  moduloId Int
+  ver       Boolean @default(false)
+  crear     Boolean @default(false)
+  editar    Boolean @default(false)
+  eliminar  Boolean @default(false)
+  rol        Rol    @relation(fields: [rolId], references: [id])
+  modulo     Modulo @relation(fields: [moduloId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  @@unique([rolId, moduloId])
+  @@map("permisos_roles")
+}
+model Categoria {
+  id          Int      @id @default(autoincrement())
+  tiendaId    Int
+  nombre      String   @db.VarChar(50)
+  descripcion String?  @db.VarChar(200)
+  estado      Boolean  @default(true)
+  tienda      Tienda      @relation(fields: [tiendaId], references: [id])
+  productos   Producto[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@unique([tiendaId, nombre])
+  @@index([tiendaId])
+  @@map("categorias")
+}
+model Marca {
+  id          Int      @id @default(autoincrement())
+  tiendaId    Int
+  nombre      String   @db.VarChar(100)
+  descripcion String?  @db.VarChar(200)
+  estado      Boolean  @default(true)
+  tienda      Tienda      @relation(fields: [tiendaId], references: [id])
+  productos   Producto[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@unique([tiendaId, nombre])
+  @@index([tiendaId])
+  @@map("marcas")
+}
+model TipoPago {
+  id          Int      @id @default(autoincrement())
+  nombre      String   @unique @db.VarChar(50)
+  descripcion String?  @db.VarChar(200)
+  estado      Boolean  @default(true)
+  ventas      Venta[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@map("tipos_pago")
+}
+model TipoMovimiento {
+  id          Int      @id @default(autoincrement())
+  nombre      String   @unique @db.VarChar(50)
+  descripcion String?  @db.VarChar(200) //ING - DEV - VEN - PRO - REG - INT
+  abreviatura String   @db.VarChar(10)
+  naturaleza  String   @default("") @db.VarChar(10) // ENTRADA | SALIDA
+  estado      Boolean  @default(true)
+  movimientos MovimientoInventario[]
+  salidas     Salida[]
+  ingresos    Ingreso[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@map("tipos_movimiento")
+}
+model Cliente {
+  id          Int      @id @default(autoincrement())
+  nombre      String   @db.VarChar(150)
+  telefono    String?  @db.VarChar(30)
+  fecha       DateTime?
+  direccion   String?  @db.VarChar(250)
+  correo      String?  @default("") @db.VarChar(250)
+  nit         String?  @db.VarChar(50)
+  observacion String?  @db.Text
+  estado      Boolean  @default(true)
+  ventas       Venta[]
+  salidas      Salida[]
+  ingresos     Ingreso[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  @@index([nombre])
+  @@index([telefono])
+  @@index([nit])
+  @@map("clientes")
+}
+model Producto {
+  id               Int      @id @default(autoincrement())
+  tiendaId         Int
+  categoriaId      Int
+  marcaId          Int
+  codigo           Int
+  sku              String   @unique @db.VarChar(50)
+  descripcion      String   @db.VarChar(300)
+  color            String   @db.VarChar(100)
+  unidad           String   @default("PIEZA") @db.VarChar(20)
+  tallas           String   @default("U") @db.VarChar(50)
+  piezas           Int      @default(1)
+  precioVenta      Decimal  @default(0) @db.Decimal(10,2)
+  stockActual      Int      @default(0)
+  stockMinimo      Int      @default(1)
+  imagenPrincipal  String?  @db.VarChar(500)
+  fechaIngreso     DateTime?
+  observacion      String?  @db.Text
+  estado           Boolean  @default(true)
+  tienda           Tienda      @relation(fields: [tiendaId], references: [id])
+  categoria        Categoria   @relation(fields: [categoriaId], references: [id])
+  marca            Marca       @relation(fields: [marcaId], references: [id])
+  ingresos         IngresoDetalle[]
+  ventas           VentaDetalle[]
+  movimientos      MovimientoInventario[]
+  imagenes         ProductoImagen[]
+  salidas          SalidaDetalle[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  @@unique([tiendaId, categoriaId, codigo])
+  @@index([tiendaId, categoriaId, marcaId, descripcion, color, tallas])
+  @@index([sku])
+  @@index([codigo])
+  @@index([descripcion])
+  @@index([categoriaId])
+  @@index([marcaId])
+  @@index([tiendaId])
+  @@map("productos")
+}
+model ProductoImagen {
+  id            Int      @id @default(autoincrement())
+  productoId    Int
+  nombre        String?  @db.VarChar(200)
+  url           String   @db.VarChar(500)
+  orden         Int      @default(1)
+  esPrincipal   Boolean  @default(false)
+  estado        Boolean  @default(true)
+  producto      Producto @relation(fields: [productoId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  @@index([productoId])
+  @@map("producto_imagenes")
+}
+model Ingreso {
+  id            Int      @id @default(autoincrement())
+  tiendaId      Int
+  numero        Int
+  gestion       Int
+  codigo        String   @db.VarChar(50)
+  fecha         DateTime @default(now())
+  observacion   String?  @db.Text
+
+  usuarioId     Int
+  tipoMovimientoId Int   @default(1)
+  clienteId     Int?
+
+  ventaId       Int?      
+  estado        Boolean  @default(true)
+  tienda        Tienda   @relation(fields: [tiendaId], references: [id])
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id])
+  tipoMovimiento   TipoMovimiento  @relation(fields: [tipoMovimientoId], references: [id])
+  venta         Venta?   @relation(fields: [ventaId], references: [id])
+  cliente       Cliente? @relation(fields: [clienteId], references: [id])
+
+  detalles      IngresoDetalle[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  @@unique([tiendaId, gestion, numero])
+  @@unique([codigo])
+  @@index([fecha])
+  @@index([gestion])
+  @@map("ingresos")
+}
+model IngresoDetalle {
+  id             Int      @id @default(autoincrement())
+  ingresoId      Int
+  productoId     Int
+  cantidad       Int
+  costoUnitario  Decimal  @db.Decimal(10,2)
+  ingreso        Ingreso  @relation(fields: [ingresoId], references: [id])
+  producto        Producto @relation(fields: [productoId], references: [id])
+  @@index([ingresoId])
+  @@index([productoId])
+  @@map("ingreso_detalles")
+}
+model Venta {
+  id            Int      @id @default(autoincrement())
+  tiendaId      Int
+  numero        Int
+  gestion       Int
+  codigo        String   @db.VarChar(50)
+  fecha         DateTime @default(now())
+  observacion   String?  @db.VarChar(500)
+
+  usuarioId     Int
+  tipoMovimientoId Int   @default(2)
+  clienteId     Int?
+
+  tipoPagoId    Int
+  total         Decimal  @db.Decimal(10,2)
+  estado        Boolean  @default(true)
+  tienda        Tienda   @relation(fields: [tiendaId], references: [id])
+  cliente       Cliente? @relation(fields: [clienteId], references: [id])
+  tipoPago      TipoPago @relation(fields: [tipoPagoId], references: [id])
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id])
+  detalles      VentaDetalle[]
+  ingresos      Ingreso[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  @@unique([tiendaId, gestion, numero])
+  @@unique([codigo])
+  @@index([fecha])
+  @@index([gestion])
+  @@map("ventas")
+}
+model VentaDetalle {
+  id              Int      @id @default(autoincrement())
+  ventaId         Int
+  productoId      Int
+  cantidad        Int
+  precioLista     Decimal  @db.Decimal(10,2)
+  descuento       Decimal  @default(0) @db.Decimal(10,2)
+  precioUnitario  Decimal  @db.Decimal(10,2)
+  subtotal        Decimal  @db.Decimal(10,2)
+  venta           Venta    @relation(fields: [ventaId], references: [id])
+  producto        Producto @relation(fields: [productoId], references: [id])
+  @@index([ventaId])
+  @@index([productoId])
+  @@map("venta_detalles")
+}
+model MovimientoInventario {
+  id                Int      @id @default(autoincrement())
+  productoId        Int
+  tipoMovimientoId  Int
+  cantidad          Int
+  stockAnterior     Int
+  stockNuevo        Int
+  referencia        String?  @db.VarChar(50)
+  referenciaId      Int?
+  observacion String? @db.VarChar(300)
+  usuarioId         Int
+  fecha             DateTime @default(now())
+  producto          Producto        @relation(fields: [productoId], references: [id])
+  tipoMovimiento    TipoMovimiento  @relation(fields: [tipoMovimientoId], references: [id])
+  usuario           Usuario         @relation(fields: [usuarioId], references: [id])
+  createdAt         DateTime @default(now())
+  @@index([productoId])
+  @@index([fecha])
+  @@map("movimientos_inventario")
+}
+model Salida {
+  id               Int             @id @default(autoincrement())
+  tiendaId         Int
+  numero           Int
+  gestion          Int
+  codigo           String          @db.VarChar(50)
+  fecha            DateTime        @default(now())
+  observacion      String?         @db.VarChar(500)
+  
+  usuarioId        Int
+  tipoMovimientoId Int
+  clienteId        Int?
+  
+  estado           Boolean         @default(true)  
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt  
+  tienda           Tienda          @relation(fields: [tiendaId], references: [id])
+  cliente          Cliente?        @relation(fields: [clienteId], references: [id])
+  usuario          Usuario         @relation(fields: [usuarioId], references: [id])
+  tipoMovimiento   TipoMovimiento  @relation(fields: [tipoMovimientoId], references: [id])
+  detalles         SalidaDetalle[]
+
+  @@unique([tiendaId, gestion, numero])
+  @@unique([codigo])
+  @@index([fecha])
+  @@index([gestion])
+  @@map("salidas")
+}
+
+model SalidaDetalle {
+  id         Int      @id @default(autoincrement())
+  salidaId   Int
+  productoId Int
+  cantidad   Int
+  
+  salida     Salida   @relation(fields: [salidaId], references: [id])
+  producto   Producto @relation(fields: [productoId], references: [id])
+
+  @@index([salidaId])
+  @@index([productoId])
+  @@map("salida_detalles")
+}

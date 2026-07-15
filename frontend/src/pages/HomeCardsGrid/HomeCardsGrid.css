@@ -1,0 +1,181 @@
+/* Contenedor Responsivo Inteligente: Se rompe solo sin Media Queries complejas */
+.home-cards-responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-xl, 24px);
+  width: 100%;
+  padding: var(--space-md, 16px) 0;
+}
+
+/* Tarjeta Base Estilo Premium Minimalista */
+.home-card-premium {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-clip: padding-box;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Encabezado interno de la Card */
+.home-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg, 20px);
+}
+
+/* Tags de estado superiores */
+.home-card-tag {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 30px;
+}
+
+.bg-tag-primary {
+  background: rgba(31, 39, 56, 0.06);
+  color: var(--color-primary, #1f2738);
+}
+.bg-tag-danger {
+  background: #fde8e8;
+  color: #e74c3c;
+}
+.bg-tag-success {
+  background: #eafaf1;
+  color: #27ae60;
+}
+.bg-tag-warning {
+  background: #fef9e7;
+  color: #f39c12;
+}
+
+/* Contenedores de Iconos Circulares */
+.home-card-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-primary {
+  background: rgba(31, 39, 56, 0.05);
+  color: var(--color-primary, #1f2738);
+}
+.icon-danger {
+  background: rgba(231, 76, 60, 0.08);
+  color: #e74c3c;
+}
+.icon-success {
+  background: rgba(39, 174, 96, 0.08);
+  color: #27ae60;
+}
+.icon-warning {
+  background: rgba(243, 156, 18, 0.08);
+  color: #f39c12;
+}
+
+/* Cuerpo Informativo Principal */
+.home-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Datos Numéricos Destacados en Negro Profundo */
+.home-card-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: #000000 !important;
+  margin: 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.home-card-value-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555555;
+  margin-left: 2px;
+}
+
+.home-card-title {
+  font-size: 13px;
+  color: var(--color-text-muted, #7f8c8d);
+  margin: 4px 0 0 0;
+  font-weight: 500;
+}
+
+/* Footer sutil explicativo */
+.home-card-footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.05);
+}
+
+.footer-metric-positive {
+  font-size: 11px;
+  color: #27ae60;
+  font-weight: 600;
+}
+.footer-metric-negative {
+  font-size: 11px;
+  color: #e74c3c;
+  font-weight: 600;
+}
+.footer-metric-neutral {
+  font-size: 11px;
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   SOMBRAS DE PROFUNDIDAD (Glow effects usando los colores base)
+   ========================================================================== */
+.card-glow-primary {
+  box-shadow:
+    0 10px 25px -5px rgba(31, 39, 56, 0.04),
+    0 8px 16px -6px rgba(31, 39, 56, 0.02);
+}
+.card-glow-danger {
+  box-shadow:
+    0 10px 25px -5px rgba(231, 76, 60, 0.05),
+    0 8px 16px -6px rgba(231, 76, 60, 0.02);
+}
+.card-glow-success {
+  box-shadow:
+    0 10px 25px -5px rgba(39, 174, 96, 0.05),
+    0 8px 16px -6px rgba(39, 174, 96, 0.02);
+}
+.card-glow-warning {
+  box-shadow:
+    0 10px 25px -5px rgba(243, 156, 18, 0.04),
+    0 8px 16px -6px rgba(243, 156, 18, 0.02);
+}
+
+/* Borde interactivo sutil cuando hay fallas críticas */
+.border-pulse-critical {
+  border: 1.5px solid rgba(231, 76, 60, 0.35) !important;
+}
+
+/* Adaptación estricta para pantallas menores a 512px */
+@media (max-width: 512px) {
+  .home-card-premium {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .home-card-value {
+    font-size: 20px;
+  }
+}

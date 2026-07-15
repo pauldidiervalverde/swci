@@ -1,0 +1,294 @@
+.datatable {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+  /* border-radius: var(--radius-xl); */
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.datatable table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+/* ==========================
+   HEADER
+========================== */
+.datatable thead {
+  background: var(--color-primary);
+}
+.datatable th {
+  padding: 18px 20px;
+  text-align: left;
+  color: var(--color-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  /* border-right: 1px solid rgba(255, 255, 255, 0.08); */
+}
+.datatable th:last-child {
+  border-right: none;
+}
+/* ==========================
+   BODY
+========================== */
+.datatable td {
+  padding: 4px 16px;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-bold);
+  color: var(--color-black);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-black);
+  border-right: 1px solid #b3b3b3;
+}
+.datatable td:last-child {
+  border-right: none;
+}
+.datatable__row {
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.datatable__row:hover {
+  background: #ccb876;
+  box-shadow: inset 4px 0 0 var(--color-secondary);
+}
+/* ==========================
+   PRIMARY CELL
+========================== */
+.datatable__primary-cell {
+  gap: 5px;
+  font-weight: var(--font-medium);
+}
+/* ==========================
+   EXPAND BUTTON
+========================== */
+.datatable__expand-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--color-text-light);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.datatable__expand-btn:hover {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--color-secondary);
+  transform: scale(1.08);
+}
+/* ==========================
+   EXPANDED
+========================== */
+.datatable__expanded-row td {
+  padding: 0;
+  background: #fbfbfb;
+}
+.datatable__details {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  animation: expandRow 0.25s ease;
+}
+.datatable__detail-item {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 24px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--color-border);
+}
+.datatable__detail-item:last-child {
+  border-bottom: none;
+}
+.datatable__detail-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-light);
+  flex-shrink: 0;
+}
+.datatable__detail-value {
+  text-align: right;
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+}
+/* ==========================
+   EMPTY
+========================== */
+.datatable__empty {
+  text-align: center;
+  padding: 60px !important;
+  color: var(--color-text-light);
+}
+/* ==========================
+   ANIMATION
+========================== */
+@keyframes expandRow {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ==========================
+   TABLET    
+========================== */
+@media (max-width: 1200px) {
+  .datatable__primary-cell {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-weight: var(--font-medium);
+  }
+  /* .datatable {
+    border-radius: var(--radius-lg);
+  } */
+
+  .datatable td {
+    padding: 10px 16px;
+  }
+}
+/* ==========================
+   MOBILE
+========================== */
+@media (max-width: 450px) {
+  .datatable td {
+    padding: 4px;
+    font-size: var(--font-size-sm);
+  }
+  .datatable__details {
+    padding: 0px 10px;
+  }
+  .datatable__detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+  .datatable__detail-value {
+    text-align: left;
+  }
+}
+/* ==========================
+   PAGINACIÓN (NUEVO)
+========================== */
+.datatable__pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm, 14px);
+  color: var(--color-black);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.datatable__pagination-limit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.datatable__pagination-limit select {
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 6px);
+  background: white;
+  cursor: pointer;
+  font-weight: var(--font-semibold);
+}
+
+.datatable__pagination-info {
+  color: var(--color-text-light);
+  font-weight: var(--font-medium);
+}
+
+.datatable__pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.datatable__page-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 6px);
+  background: white;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.datatable__page-btn:hover:not(:disabled) {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.datatable__page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.datatable__page-current {
+  font-weight: var(--font-semibold);
+}
+
+/* Ajuste móvil para paginación */
+@media (max-width: 600px) {
+  .datatable__pagination {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+  }
+  .datatable__pagination-limit {
+    justify-content: center;
+    width: 100%;
+    /* display: none; */
+  }
+  .datatable__pagination-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+}
+/* Clase para pintar las filas críticas en rojo suave */
+.datatable__row--danger {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-danger-ligth) 0%,
+    #f2d5d5 50%,
+    var(--color-danger-ligth) 100%
+  ) !important;
+}
+
+/* Asegura que las celdas expandidas en formato móvil mantengan el mismo gradiente */
+.datatable__expanded-row.datatable__row--danger {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-danger-ligth) 0%,
+    #f2d5d5 50%,
+    var(--color-danger-ligth) 100%
+  ) !important;
+}
+
+/* Opcional: Si quieres un efecto hover sutilmente más oscuro para las filas en peligro
+.datatable__row--danger:hover {
+  background-color: #fddcdc !important;
+} */

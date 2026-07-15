@@ -1,0 +1,255 @@
+/* Contenedor Principal en Bloques de arriba hacia abajo */
+.profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Secciones generales */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-section__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary, #1e293b);
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECCIÓN 1: TARJETA DE DATOS PERSONALES
+   ========================================================================== */
+.profile-user-card {
+  background-color: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.profile-user-card__avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-user-card__avatar {
+  width: 90px;
+  height: 90px;
+  background-color: var(--bg-neutral, #f1f5f9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted, #64748b);
+  border: 2px solid var(--border-color, #e2e8f0);
+}
+
+.profile-user-card__avatar-icon {
+  color: var(--primary-color, #3b82f6);
+}
+
+.profile-user-card__badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #ef4444; /* Inactivo por defecto */
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  border: 2px solid #ffffff;
+}
+
+.profile-user-card__badge--active {
+  background-color: #10b981; /* Verde esmeralda Activo */
+}
+
+.profile-user-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.profile-user-card__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary, #1e293b);
+  margin: 0;
+}
+
+.profile-user-card__username {
+  font-size: 0.95rem;
+  color: var(--text-muted, #64748b);
+  margin: 0 0 0.75rem 0;
+}
+
+.profile-user-card__meta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.profile-user-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary, #475569);
+}
+
+.profile-user-card__meta-icon {
+  color: var(--text-muted, #94a3b8);
+}
+
+/* ==========================================================================
+   SECCIÓN 2: GRID DE PROCESOS (DASHBOARD CARDS)
+   ========================================================================== */
+.profile-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* ==========================================================================
+   SECCIÓN 3: FORMULARIO DE CAMBIO DE CONTRASEÑA (ESTILO SEGURIDAD)
+   ========================================================================== */
+.profile-password-card {
+  background-color: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.profile-password-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-password-card__header-icon {
+  color: var(--primary-color, #3b82f6);
+}
+
+.profile-password-card__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary, #1e293b);
+  margin: 0;
+}
+
+.profile-password-card__subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted, #64748b);
+  margin: 0 0 1.75rem 0;
+}
+
+.profile-password-card__form {
+  max-width: 500px; /* Centrado y alineado de forma elegante */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Contenedor relativo para posicionar el botón de ver/ocultar encima de tu input */
+.profile-form-group-password {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botón flotante para ver/ocultar contraseña */
+.profile-password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 36px; /* Sincronizado perfectamente con la altura estándar del Label */
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.profile-password-toggle-btn:hover {
+  color: var(--text-primary, #1e293b);
+  background-color: var(--bg-neutral, #f1f5f9);
+}
+
+/* Asegurar espacio interior derecho en tus inputs del formulario para que el texto no pise el icono */
+.profile-form-group-password .input {
+  padding-right: 42px !important;
+}
+
+.profile-password-card__actions {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Alertas de Mensajes */
+.profile-alert {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.profile-alert--danger {
+  background-color: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+}
+
+.profile-alert--success {
+  background-color: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  color: #047857;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .profile-user-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .profile-user-card__meta-grid {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .profile-dashboard-grid {
+    grid-template-columns: 1fr; /* Colapso vertical automático en tablets/móviles */
+    gap: 1rem;
+  }
+
+  .profile-password-card {
+    padding: 1.5rem;
+  }
+
+  .profile-password-card__form {
+    max-width: 100%;
+  }
+}

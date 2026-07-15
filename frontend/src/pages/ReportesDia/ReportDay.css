@@ -1,0 +1,62 @@
+/* Configuración Base: Rejilla de 12 columnas */
+.report-wrapper-central-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-xl);
+  width: 100%;
+  align-items: start;
+  font-family: var(--font-family);
+  margin-bottom: var(--space-xl);
+}
+
+.wrapper-grid-item {
+  width: 100%;
+}
+
+/* ==========================================
+   PANTALLAS GRANDES: Distribución 6 - 3 - 3
+   ========================================== */
+.chart-area {
+  grid-column: span 6;
+}
+
+.payments-area {
+  grid-column: span 3;
+}
+
+.summary-area {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md); /* Separa las tres DashboardCards verticalmente */
+}
+
+/* ==========================================
+   TABLETS (max-width: 1024px): 12 - 6 - 6
+   ========================================== */
+@media (max-width: 1024px) {
+  .chart-area {
+    grid-column: span 12;
+  }
+  .payments-area {
+    grid-column: span 6;
+  }
+  .summary-area {
+    grid-column: span 6;
+  }
+}
+
+/* ==========================================
+   MÓVILES (max-width: 512px): Todo a 1 columna
+   ========================================== */
+@media (max-width: 512px) {
+  .report-wrapper-central-grid {
+    grid-template-columns: 1fr; /* Fuerza una sola fila vertical */
+    gap: var(--space-lg);
+  }
+  .chart-area,
+  .payments-area,
+  .summary-area {
+    grid-column: span 12 !important;
+  }
+}

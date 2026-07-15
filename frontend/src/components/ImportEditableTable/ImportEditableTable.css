@@ -1,0 +1,165 @@
+.import-table {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  overflow-x: auto;
+}
+.import-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 900px;
+}
+/* ==========================
+   HEADER
+========================== */
+.import-table thead {
+  background: var(--color-primary);
+}
+.import-table th {
+  padding: 6px 12px;
+  text-align: left;
+  color: var(--color-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+/* ==========================
+   BODY
+========================== */
+.import-table td {
+  padding: 2px 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border);
+  background: white;
+}
+.import-table tbody tr {
+  transition: var(--transition-fast);
+}
+.import-table tbody tr:hover {
+  background: #ccb87620;
+}
+.import-table tbody tr:hover td {
+  background: #ccb87620;
+}
+/* ==========================
+   INPUTS INTERNOS
+========================== */
+.import-table .input-group {
+  max-width: 150px;
+}
+.import-table .input {
+  height: 25px;
+  font-size: var(--font-size-sm);
+}
+.import-table .select-field {
+  min-width: 150px;
+}
+.import-table .select-field__input {
+  height: 25px;
+  font-size: var(--font-size-sm);
+}
+/* ==========================
+   STATUS BADGES
+========================== */
+.import-table__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  padding: 6px 10px;
+  margin-left: 6px;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+}
+.import-table__status--ready {
+  border: 1px solid var(--color-success);
+  background: rgba(22, 163, 74, 0.3);
+  color: var(--color-success-dark);
+}
+.import-table__status--duplicate {
+  border: 1px solid var(--color-warning);
+  background: rgba(241, 202, 29, 0.2);
+  color: var(--color-warning);
+}
+.import-table__status--error {
+  border: 1px solid var(--color-danger);
+  background: rgba(218, 23, 23, 0.2);
+  color: var(--color-danger);
+}
+.import-table__status--imported {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--color-info);
+}
+/* ==========================
+   COLUMNAS
+========================== */
+.import-table td:nth-child(3) {
+  font-weight: var(--font-bold);
+  white-space: nowrap;
+}
+.import-table td:nth-child(8) {
+  font-weight: var(--font-bold);
+  white-space: nowrap;
+}
+/* ==========================
+   OBSERVACION
+========================== */
+.import-table td:last-child {
+  min-width: 90px;
+  font-size: var(--font-size-sm);
+  color: var(--color-black);
+}
+/* ==========================
+   EMPTY
+========================== */
+.import-table__empty {
+  text-align: center;
+  padding: 50px !important;
+  color: var(--color-text-light);
+}
+/* ==========================
+   SCROLL
+========================== */
+.import-table::-webkit-scrollbar {
+  height: 10px;
+}
+.import-table::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+.import-table::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 999px;
+}
+.import-table::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 1200px) {
+  .import-table table {
+    min-width: 1200px;
+  }
+}
+@media (max-width: 768px) {
+  .import-table table {
+    min-width: 600px;
+  }
+  .import-table th {
+    padding: 12px;
+  }
+  .import-table td {
+    padding: 6px;
+  }
+  .import-table .input,
+  .import-table .select-field__input {
+    height: 34px;
+  }
+}

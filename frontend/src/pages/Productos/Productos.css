@@ -1,0 +1,110 @@
+.productos {
+  position: relative; /* Atrapa al modal aquí dentro */
+  width: 100%;
+  height: 100%; /* Asegúrate de que use el alto provisto por el Outlet */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  transition: all 0.5s ease;
+}
+/* =========================
+   FILTROS
+========================= */
+.productos__filters {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+.productos__item {
+  flex: 1;
+  min-width: 200px;
+}
+.productos__actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: space-start;
+}
+/* =========================
+   CONTENEDORES PARA MOVIMIENTO
+========================= */
+.productos__panel-wrapper {
+  max-height: 0;
+
+  /* overflow: hidden; */
+
+  transition:
+    max-height 2s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 1.6s ease,
+    transform 1.6s ease;
+}
+
+.productos__panel-wrapper--open {
+  max-height: 1200px;
+}
+
+/* =========================
+   FORMULARIO INTEGRADO
+========================= */
+.productos__form-container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+.productos__form-header {
+  margin-bottom: var(--space-lg);
+}
+.productos__form-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+.productos__form-subtitle {
+  margin-top: 4px;
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+}
+/* =========================
+   TABLA
+========================= */
+.productos__table {
+  width: 100%;
+}
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+@media (max-width: 992px) {
+  /* .productos__filters {
+    gap: var(--space-sm);
+  } */
+  .productos__categoria {
+    min-width: 180px;
+  }
+}
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media (max-width: 768px) {
+  /* .productos__filters {
+    flex-direction: column;
+    align-items: stretch;
+  } */
+  .productos__search,
+  .productos__categoria,
+  .productos__new {
+    width: 100%;
+  }
+  .productos__form-container {
+    padding: var(--space-lg);
+  }
+}
+@media (max-width: 600px) {
+  .productos__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

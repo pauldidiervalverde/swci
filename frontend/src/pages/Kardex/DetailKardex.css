@@ -1,0 +1,129 @@
+.detail-kardex-container {
+  padding: var(--container-padding);
+  max-width: var(--content-max-width);
+  font-family: var(--font-family);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.detail-kardex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-family: var(--font-family);
+  color: var(--color-text-muted);
+  gap: var(--space-md);
+}
+
+.detail-kardex-error {
+  color: var(--color-danger);
+  font-weight: var(--font-semibold);
+}
+
+.detail-kardex-spinner {
+  animation: detailKardexSpin 1s linear infinite;
+  color: var(--color-primary);
+}
+
+@keyframes detailKardexSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.detail-kardex-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+}
+
+.detail-kardex-title-area {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.detail-kardex-main-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.detail-kardex-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.detail-kardex-kpi-grid {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.detail-kardex-filter-card {
+  background-color: var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.detail-kardex-filter-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.detail-kardex-filter-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-medium);
+  margin: 0;
+  color: var(--color-secondary);
+}
+
+.detail-kardex-filter-flex {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.detail-kardex-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+  min-width: 200px;
+}
+
+.detail-kardex-input-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-background);
+}
+
+.detail-kardex-date-input {
+  height: var(--input-height);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  padding: 0 var(--space-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  outline: none;
+}
+
+.detail-kardex-filter-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  height: var(--input-height);
+}

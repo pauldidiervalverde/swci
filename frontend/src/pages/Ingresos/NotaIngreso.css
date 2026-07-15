@@ -1,0 +1,259 @@
+/* ==========================================================================
+   ESTILOS EN PANTALLA (VISTA PREVIA)
+   ========================================================================== */
+
+.nota-ingreso-container {
+  padding: var(--container-padding);
+  background-color: var(--color-background);
+}
+
+.nota-ingreso-actions {
+  margin-bottom: var(--space-lg);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nota-ingreso-mensaje {
+  padding: var(--space-2xl);
+  text-align: center;
+  font-family: var(--font-family);
+  color: var(--color-text);
+}
+
+/* Caja contenedora dinámica: Crece hacia abajo según los ítems */
+.income-box-dynamic {
+  width: 216mm;
+  min-height: 140mm;
+  margin: 0 auto;
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-family);
+  color: var(--color-text);
+  box-sizing: border-box;
+}
+
+/* Encabezado */
+.income-header {
+  display: table;
+  width: 100%;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: var(--space-sm);
+}
+
+.income-meta {
+  display: table-cell;
+  vertical-align: top;
+  text-align: right;
+}
+
+.income-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-black);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-xs) 0;
+  letter-spacing: 0.5px;
+}
+
+.income-code,
+.income-number,
+.income-management {
+  font-size: var(--font-size-xs);
+  margin: 0;
+}
+
+/* Resumen del movimiento */
+.income-summary-section {
+  display: table;
+  width: 100%;
+  margin-top: var(--space-md);
+  padding: var(--space-sm);
+  background-color: var(--color-background);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.income-col {
+  display: table-cell;
+  width: 50%;
+  vertical-align: top;
+}
+
+.income-col p {
+  margin: var(--space-xs) 0;
+}
+
+/* Caja de observaciones */
+.income-observation-box {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm);
+  border-left: 3px solid var(--color-border);
+  font-size: var(--font-size-xs);
+  background-color: var(--color-surface);
+}
+
+/* ==========================================================================
+   TABLA ULTRACOMPACTA (Diseñada para filas delgadas)
+   ========================================================================== */
+
+.income-details-section {
+  margin-top: var(--space-lg);
+  width: 100%;
+}
+
+.income-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(
+    --font-size-xxs
+  ); /* Letra pequeña (10px) para máxima densidad */
+}
+
+.income-table th {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-sm); /* Reducido al mínimo */
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+}
+
+.income-table td {
+  padding: 3px var(--space-sm); /* Filas súper delgadas */
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.font-mono {
+  font-family: monospace;
+  font-size: var(--font-size-xs);
+}
+
+.income-prod-desc {
+  font-weight: var(--font-semibold);
+  display: block;
+  font-size: var(--font-size-xs);
+}
+
+/* Pie de página y Bloque de Firmas */
+.income-footer {
+  margin-top: var(--space-xl);
+  /* Evita que el bloque de firmas se rompa a la mitad al final de una página */
+  page-break-inside: avoid;
+}
+
+.income-totals-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.signature-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+}
+
+.signature-box {
+  text-align: center;
+  width: 40%;
+}
+
+.signature-line {
+  border-top: 1px dashed var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.signature-box p {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  font-weight: var(--font-medium);
+}
+
+/* ==========================================================================
+   CONTROL DE IMPRESIÓN (@media print)
+   ========================================================================== */
+
+@media print {
+  @page {
+    size: letter portrait; /* Vertical */
+    margin: 15mm 10mm 15mm 10mm; /* Márgenes físicos prudenciales para saltos de página */
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .income-box-dynamic,
+  .income-box-dynamic * {
+    visibility: visible;
+  }
+
+  .income-box-dynamic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  /* Control de quiebre de páginas en tablas masivas */
+  .income-table tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  .income-table th {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #111111 !important;
+    color: #ffffff !important;
+  }
+
+  .income-summary-section {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #f5f6f8 !important;
+  }
+
+  .income-totals-bar {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: #1f1f1f !important;
+    color: #ffffff !important;
+  }
+}
+/* Nombre del producto limpio y destacado */
+.income-prod-desc {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+/* Columna de especificaciones (Color / Talla) alineada en una sola línea */
+.income-prod-specs {
+  font-size: var(
+    --font-size-xs
+  ); /* Un punto más pequeña (10px) para que entre holgado */
+  color: var(--color-text-light);
+  font-weight: var(--font-medium);
+  text-transform: uppercase; /* Hace que se vea más ordenado en almacén (ej: GRISS / L) */
+  align-items: center;
+  text-align: center;
+}
+
+/* Ajuste general de las celdas para mantener la fila delgada */
+.income-table td {
+  padding: 4px var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}

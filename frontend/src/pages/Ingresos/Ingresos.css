@@ -1,0 +1,336 @@
+.ingresos {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  transition: all 0.5s ease;
+}
+/* =========================
+   SECCIÓN FILTROS / CABECERA GENERAL
+========================= */
+
+/* Contenedor principal: Usamos una grilla de 12 columnas en escritorio */
+.ingresos__form-client {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 8px; /* Espaciado entre las columnas */
+  width: 100%;
+  align-items: end; /* Alinea los inputs perfectamente en la base si las etiquetas miden distinto */
+}
+
+/* El cliente toma 5 espacios (del 1 al 6) */
+.ingresos__client-nombre {
+  grid-column: span 5;
+}
+
+/* El tipo de pago toma 2 espacios (del 6 al 8) */
+.ingresos__client-pago {
+  grid-column: span 2;
+}
+
+/* La observación toma 5 espacios (del 8 al 13) */
+.ingresos__client-obs {
+  grid-column: span 5;
+}
+
+/* Responsive: pantallas menores a 768px */
+@media (max-width: 1000px) {
+  .ingresos__form-client {
+    /* Cambiamos a 1 sola columna para que hereden el 100% automáticamente */
+    /* grid-template-columns: 1fr; */
+    gap: 4px; /* Reducimos un poco el espacio vertical en móviles */
+  }
+
+  .ingresos__client-nombre {
+    grid-column: span 12;
+  }
+  .ingresos__client-pago {
+    grid-column: span 4;
+  }
+  .ingresos__client-obs {
+    grid-column: span 8; /* Ocupan todo el ancho de la columna única */
+  }
+}
+/* Responsive: pantallas menores a 768px */
+@media (max-width: 400px) {
+  .ingresos__form-client {
+    /* Cambiamos a 1 sola columna para que hereden el 100% automáticamente */
+    /*grid-template-columns: 1fr;
+    gap: 4px; /* Reducimos un poco el espacio vertical en móviles */
+  }
+
+  .ingresos__client-nombre,
+  .ingresos__client-pago,
+  .ingresos__client-obs {
+    /*grid-column: span 1; /* Ocupan todo el ancho de la columna única */
+  }
+}
+.ingresos__filters {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+.ingresos__item img {
+  border-radius: 16px;
+  height: 70px;
+  width: 100%;
+}
+.ingresos__item {
+  flex: 1;
+  min-width: 200px;
+}
+.ingresos__item--wide {
+  flex: 2;
+}
+.ingresos__actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-start;
+}
+/* =========================
+   PANEL DE NUEVO INGRESO (ACORDEÓN ANIMADO)
+========================= */
+.ingresos__panel-wrapper {
+  max-height: 0;
+  overflow: visible;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    max-height 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+.ingresos__panel-wrapper--open {
+  max-height: 2000px; /* Más espacio para albergar cabecera + buscador + subtabla */
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ==== CONTROL DEL FORMULARIO INTERNO  ==== */
+.ingresos__form-container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.ingresos__form-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+.ingresos__form-title span {
+  color: var(--color-text-light);
+  font-size: var(--font-size-md);
+}
+.ingresos__form-subtitle {
+  margin-top: 4px;
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+}
+
+/* Campos superiores del documento */
+.ingresos__form-top-fields {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+/* =========================
+   SECCIÓN DETALLES (AGREGAR ITEM EN CALIENTE)
+========================= */
+.ingresos__details-section {
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.ingresos__section-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+/* Contenedor principal: define las 12 columnas */
+.ingresos__search-container {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px; /* Espacio entre los elementos (ajústalo a tu gusto) */
+  position: relative; /* Por si el dropdown necesita posicionamiento absoluto */
+}
+
+/* Distribución de los 3 hijos principales en la primera fila */
+.ingresos__search-container > .ingresos__search__item:nth-child(1) {
+  grid-column: span 8; /* Ocupa 8 de 12 columnas */
+}
+
+.ingresos__search-container > .ingresos__search__item:nth-child(2) {
+  grid-column: span 2; /* Ocupa 2 de 12 columnas */
+}
+
+.ingresos__search-container > .ingresos__search__item:nth-child(3) {
+  grid-column: span 2; /* Ocupa las últimas 2 columnas */
+}
+
+/* El Dropdown: se posiciona en la fila de abajo pero alineado con el primer input */
+.ingresos__search__dropdown {
+  grid-column: 1 / 9; /* Empieza en la línea 1 y termina en la 9 (ocupa 8 columnas) */
+  grid-row: 2; /* Se fuerza a ir a la fila 2 */
+
+  /* Estilos extra para que flote bien si hay contenido abajo */
+  z-index: 3000;
+  background-color: white; /* Asegúrate de que tenga fondo para que no se transparente */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Opcional: una sombra elegante */
+}
+/* Dropdown flotante de resultados rápidos */
+.ingresos__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+}
+.ingresos__dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  transition: background 0.2s ease;
+}
+.ingresos__dropdown-item:hover {
+  background: var(--color-secondary-light);
+}
+.ingresos__dropdown-specs {
+  color: var(--color-text-light);
+}
+/* Lista temporal en el formulario */
+.ingresos__temp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-xs);
+}
+.ingresos__temp-table th {
+  text-align: left;
+  padding: var(--space-sm);
+  background: var(--color-background);
+  color: var(--color-text-light);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-medium);
+  border-bottom: 1px solid var(--color-border);
+}
+.ingresos__temp-table td {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-medium);
+  padding: var(--space-xs);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+.align-right {
+  text-align: right;
+}
+.ingresos__code-text {
+  font-family: monospace;
+}
+.ingresos__empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  text-align: center;
+  padding: 15px;
+}
+/* Inputs incrustados en la subtabla */
+.ingresos__temp-table td strong {
+  /* font-size: var(--font-size-sm); */
+  display: flex;
+  justify-content: center;
+}
+.ingresos__table-input {
+  width: 60px;
+  padding: 6px 5px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-align: right;
+}
+/* Chrome, Edge, Safari, Opera */
+.ingresos__table-input::-webkit-outer-spin-button,
+.ingresos__table-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.ingresos__table-input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+}
+/* Fila inferior de Cierre e importes totales */
+.ingresos__form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-md);
+}
+.ingresos__total-text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-semibold);
+}
+.ingresos__total-amount {
+  color: var(--color-primary);
+}
+.ingresos__footer-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+/* =========================
+   RESPONSIVE METRICS
+========================= */
+
+@media (max-width: 768px) {
+  .ingresos__item,
+  .ingresos__form-top-fields .ingresos__item {
+    width: 100%;
+  }
+  .ingresos__form-container {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+  .ingresos__temp-table th:nth-child(2),
+  .ingresos__temp-table td:nth-child(2) {
+    display: none; /* Esconder código en móvil dentro de la grilla de creación */
+  }
+  /* Distribución de los 3 hijos principales en la primera fila */
+  .ingresos__search-container > .ingresos__search__item:nth-child(1) {
+    grid-column: span 12; /* Ocupa 8 de 12 columnas */
+  }
+
+  .ingresos__search-container > .ingresos__search__item:nth-child(2) {
+    grid-column: span 6; /* Ocupa 2 de 12 columnas */
+  }
+
+  .ingresos__search-container > .ingresos__search__item:nth-child(3) {
+    grid-column: span 6; /* Ocupa las últimas 2 columnas */
+  }
+
+  /* El Dropdown: se posiciona en la fila de abajo pero alineado con el primer input */
+  .ingresos__search__dropdown {
+    grid-column: 1 / 12; /* Empieza en la línea 1 y termina en la 9 (ocupa 8 columnas) */
+    grid-row: 1; /* Se fuerza a ir a la fila 2 */
+  }
+}

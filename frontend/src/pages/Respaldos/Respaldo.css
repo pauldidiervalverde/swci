@@ -1,0 +1,49 @@
+.respaldo__content-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 600px; /* Evita que la tarjeta se deforme en pantallas muy anchas */
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+/* Efecto sutil al pasar el mouse para hacer juego con tu UI */
+.respaldo__content-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.respaldo__info h3 {
+  margin: 0 0 var(--space-sm) 0;
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-semibold);
+}
+
+.respaldo__info p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+}
+
+.respaldo__actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: var(--space-sm);
+}
+
+/* Estado deshabilitado en caso de que tu componente <Button /> lo requiera de forma nativa */
+.respaldo__actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

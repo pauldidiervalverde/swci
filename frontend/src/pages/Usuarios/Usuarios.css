@@ -1,0 +1,87 @@
+/* ==========================================================
+   PAGINA USUARIOS
+========================================================== */
+.usuarios__filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+.usuarios__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.usuarios__item:first-child {
+  flex: 1;
+}
+.usuarios__actions-top {
+  justify-content: flex-end;
+}
+/* ==========================================================
+   ACCIONES TABLA
+========================================================== */
+.usuarios__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+/* ==========================================================
+   ESTADOS
+========================================================== */
+.usuarios__estado {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-semibold);
+  transition: var(--transition-fast);
+}
+.usuarios__estado--activo {
+  background: rgba(22, 163, 74, 0.12);
+  color: var(--color-success);
+}
+.usuarios__estado--inactivo {
+  background: rgba(220, 38, 38, 0.12);
+  color: var(--color-danger);
+}
+/* ==========================================================
+   TABLET
+========================================================== */
+@media (max-width: 992px) {
+  .usuarios__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .usuarios__item {
+    width: 100%;
+  }
+  .usuarios__actions-top {
+    justify-content: stretch;
+  }
+  .usuarios__actions-top .button {
+    width: 100%;
+  }
+}
+/* ==========================================================
+   MOBILE
+========================================================== */
+@media (max-width: 576px) {
+  .usuarios__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .usuarios__actions .button {
+    width: 100%;
+  }
+  .usuarios__estado {
+    min-width: 72px;
+    font-size: var(--font-size-xxs);
+  }
+}

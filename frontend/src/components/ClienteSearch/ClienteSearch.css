@@ -1,0 +1,216 @@
+.cliente-search {
+  width: 100%;
+}
+.cliente-search__label {
+  display: block;
+  margin-bottom: 6px;
+  padding-left: 16px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium);
+}
+/* Contenedor relativo para posicionar el dropdown de manera absoluta */
+.cliente-search__custom-container {
+  position: relative;
+  width: 100%;
+}
+/* Wrapper del input para emular el contenedor flex con iconos */
+.cliente-search__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-fast);
+}
+/* Icono de búsqueda a la izquierda */
+.cliente-search__icon-left {
+  position: absolute;
+  left: 14px;
+  color: var(--color-text-light);
+  pointer-events: none;
+}
+/* Entrada de texto editable principal */
+.cliente-search__input {
+  width: 100%;
+  height: var(--input-height);
+  color: var(--color-black);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-bold);
+  padding: 0 40px 0 42px; /* Margen para iconos izquierdo y derecho */
+  border: none;
+  background: transparent;
+  outline: none;
+}
+/* Botón que aloja la flecha derecha */
+.cliente-search__arrow-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+/* Estado Focus y Estado Abierto unificados en el wrapper perimetral */
+.cliente-search__input:focus-within,
+.cliente-search__input-wrapper:focus-within,
+.cliente-search__custom-container.open .cliente-search__input-wrapper {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 4px var(--focus-secondary);
+}
+.cliente-search--disabled .cliente-search__input-wrapper {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+.cliente-search--disabled .cliente-search__input {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+.cliente-search__input--error {
+  border-color: var(--color-danger);
+}
+.cliente-search__input-wrapper:has(.cliente-search__input--error):focus-within {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
+}
+/* --- LA FLECHA PERSONALIZADA --- */
+.cliente-search__arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--color-black);
+  transition: transform var(--transition-fast);
+}
+/* Rotación elegante al abrir */
+.cliente-search__custom-container.open .cliente-search__arrow {
+  transform: rotate(180deg);
+}
+/* --- EL DESPLEGABLE ESTILIZADO --- */
+.cliente-search__dropdown {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 3000;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.cliente-search__dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.cliente-search__dropdown::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.cliente-search__dropdown::-webkit-scrollbar-track {
+  border-radius: 0 0 var(--radius-xl) 0;
+}
+/* Items del desplegable */
+.cliente-search__dropdown-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background var(--transition-slow);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+.cliente-search__dropdown-item:last-child {
+  border-bottom: none;
+}
+/* Efectos de realce interactivo y navegación por teclado */
+.cliente-search__dropdown-item:hover,
+.cliente-search__dropdown-item.keyboard-active {
+  background-color: var(--color-secondary);
+}
+/* Opción activa / seleccionada */
+.cliente-search__dropdown-item.active {
+  background-color: var(--color-secondary);
+  color: var(--color-primary-light);
+}
+/* Disposición interna del contenido de cada fila */
+.cliente-search__item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.cliente-search__item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+/* El nombre en negrita */
+.cliente-search__item-nombre {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-bold);
+  color: var(--color-black);
+}
+/* El teléfono pequeño debajo */
+.cliente-search__item-telefono {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-regular);
+  color: var(--color-text-light);
+}
+.cliente-search__dropdown-item.active .cliente-search__item-nombre,
+.cliente-search__dropdown-item.active .cliente-search__item-telefono {
+  color: var(--color-primary-light);
+}
+.cliente-search__item-check {
+  color: var(--color-primary-light);
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+/* --- SECCIÓN SIN RESULTADOS Y BOTÓN DE REGISTRO --- */
+.cliente-search__no-results {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  background: white;
+}
+.cliente-search__no-results-text {
+  font-size: var(--font-size-md);
+  color: var(--color-text-light);
+  font-weight: var(--font-regular);
+}
+/* Botón personalizado con el icono UserRoundPlus */
+.cliente-search__btn-create {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 38px;
+  background-color: var(--color-primary, #000);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-bold);
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+.cliente-search__btn-create:hover {
+  opacity: 0.9;
+}
+.cliente-search__error {
+  display: block;
+  margin-top: 6px;
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+}

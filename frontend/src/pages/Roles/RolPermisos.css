@@ -1,0 +1,161 @@
+/* =====================================================
+   CONTENEDOR
+===================================================== */
+.rol-permisos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  align-items: stretch;
+}
+/* =====================================================
+   CARGANDO
+===================================================== */
+.rol-permisos__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 220px;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+/* =====================================================
+   GRUPO
+===================================================== */
+.rol-permisos__grupo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+/* =====================================================
+   CABECERA
+===================================================== */
+.rol-permisos__header {
+  padding: 12px 20px;
+  background: var(--color-surface-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+.rol-permisos__header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+}
+/* =====================================================
+   CUERPO
+===================================================== */
+.rol-permisos__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+/* =====================================================
+   ITEM
+===================================================== */
+.rol-permisos__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: 4px 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+.rol-permisos__item:last-child {
+  border-bottom: none;
+}
+.rol-permisos__item:hover {
+  background: var(--color-hover);
+}
+/* =====================================================
+   INFORMACION
+===================================================== */
+.rol-permisos__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.rol-permisos__nombre {
+  font-weight: 600;
+  color: var(--color-text);
+}
+.rol-permisos__ruta {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+/* =====================================================
+   SWITCH
+===================================================== */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.switch input {
+  display: none;
+}
+.slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background: var(--color-border);
+  transition: 0.25s;
+  border-radius: 999px;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 4px;
+  top: 4px;
+  border-radius: 50%;
+  background: white;
+  transition: 0.25s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+.switch input:checked + .slider {
+  background: var(--color-primary);
+}
+.switch input:checked + .slider::before {
+  transform: translateX(26px);
+}
+.switch input:focus + .slider {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+/* =====================================================
+   BOTONES
+===================================================== */
+.rol-permisos__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+  .rol-permisos__item {
+    padding: 14px;
+    gap: var(--spacing-md);
+  }
+  .rol-permisos__nombre {
+    font-size: 0.95rem;
+  }
+  .rol-permisos__ruta {
+    font-size: 0.75rem;
+  }
+  .rol-permisos__actions {
+    flex-direction: column-reverse;
+  }
+  .rol-permisos__actions button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,34 @@
+/* =====================================================
+   FILTROS
+===================================================== */
+
+.roles__filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+}
+.roles__item {
+  flex: 1;
+  min-width: 200px;
+}
+.roles__item--wide {
+  flex: 2;
+}
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 768px) {
+  .roles__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .roles__item {
+    width: 100%;
+  }
+  .roles__item button {
+    width: 100%;
+  }
+}

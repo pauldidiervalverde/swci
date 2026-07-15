@@ -1,0 +1,42 @@
+/* Contenedor vertical que alinea las 4 DashboardCards perfectamente */
+.pagos-summary-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* ==========================================================================
+   ESTADOS AGREGADOS PARA LA DASHBOARDCARD (Soporte para estado "inactive")
+   Si tu DashboardCard ya maneja clases dinámicas por su prop 'status', 
+   estos estilos forzarán el look gris limpio y el texto negro profundo:
+   ========================================================================== */
+
+/* Cuando la tarjeta recibe status="inactive" */
+.dashboard-card--inactive,
+[data-status="inactive"],
+.status-inactive {
+  background: #f4f4f6 !important; /* Gris suave de fondo */
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: none !important;
+  opacity: 0.75;
+}
+
+/* Forzar textos legibles e iconos neutros en las tarjetas inactivas */
+.status-inactive .dashboard-card__title,
+[data-status="inactive"] .card-title {
+  color: #555555 !important;
+  font-weight: var(--font-medium);
+}
+
+.status-inactive .dashboard-card__value,
+[data-status="inactive"] .card-value {
+  color: #000000 !important; /* Negro absoluto solicitado para el monto */
+  font-weight: var(--font-bold);
+}
+
+.status-inactive .dashboard-card__icon,
+[data-status="inactive"] .card-icon {
+  color: #7f8c8d !important;
+  background: #e9e9eb !important;
+}

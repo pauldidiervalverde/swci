@@ -1,0 +1,142 @@
+.db-card {
+  min-width: 180px;
+  background-color: var(--color-surface);
+  border: 3px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  /* gap: var(--space-md); */
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+/* Sutil efecto hover minimalista sin romper el flat-design */
+/* .db-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
+} */
+/* Maquetación del Header */
+.db-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.db-card__title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-light);
+  letter-spacing: -0.01em;
+}
+/* Contenedor del Icono con fondos suaves basados en tus estados */
+.db-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: var(--space-sm); */
+  border-radius: var(--radius-md);
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
+/* Variantes de color para los iconos basadas en tus estados */
+.db-card__icon-wrapper--normal {
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--color-dark);
+}
+.db-card--status-normal {
+  border-top: 3px solid var(--color-primary);
+}
+.db-card__icon-wrapper--success {
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--color-success);
+}
+.db-card--status-success {
+  border-top: 3px solid var(--color-success);
+}
+/* inactive*/
+.db-card__icon-wrapper--inactive {
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--color-text-light);
+}
+.db-card--status-inactive {
+  border-top: 3px solid var(--color-text-light);
+}
+
+.db-card__icon-wrapper--yape {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #bc01d4;
+}
+.db-card--status-yape {
+  border-top: 3px solid #bc01d4;
+}
+
+.db-card__icon-wrapper--warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--color-warning);
+}
+.db-card--status-warning {
+  border-top: 3px solid var(--color-warning);
+}
+.db-card__icon-wrapper--danger {
+  background-color: rgba(220, 38, 38, 0.1);
+  color: var(--color-danger);
+}
+.db-card--status-danger {
+  border-top: 3px solid var(--color-danger);
+}
+.db-card__icon-wrapper--info {
+  background-color: rgba(37, 99, 234, 0.1);
+  color: var(--color-info);
+}
+.db-card--status-info {
+  border-top: 3px solid var(--color-info);
+}
+/* Maquetación del Cuerpo y Datos */
+.db-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.db-card__value {
+  font-family: var(--font-family);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-bold);
+  color: var(--color-primary); /* Negro puro minimalista */
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.db-card__suffix {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-regular);
+  color: var(--color-text-muted);
+}
+/* Tendencias (Métricas vs mes anterior) */
+.db-card__trend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+}
+.db-card__trend-badge {
+  font-weight: var(--font-semibold);
+  padding: 2px var(--space-sm);
+  border-radius: var(--radius-sm);
+}
+.db-card__trend--up .db-card__trend-badge {
+  background-color: rgba(22, 163, 74, 0.08);
+  color: var(--color-success-dark);
+}
+.db-card__trend--down .db-card__trend-badge {
+  background-color: rgba(220, 38, 38, 0.08);
+  color: var(--color-danger);
+}
+.db-card__trend-label {
+  color: var(--color-text-muted);
+}
