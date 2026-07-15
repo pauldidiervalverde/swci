@@ -26,6 +26,7 @@ function UsuarioModal({
     });
     useEffect(() => {
         if (!usuario) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setForm({
                 tiendas: [tiendaActiva.id],
                 nombre: "",
