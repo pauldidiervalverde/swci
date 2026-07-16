@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuthStore } from "../../stores/AuthStore"; // Ajusta la ruta según tu proyecto
+import { useAuthStore } from "../../stores/authStore"; // Ajusta la ruta según tu proyecto
 import {
     User,
     ShieldCheck,

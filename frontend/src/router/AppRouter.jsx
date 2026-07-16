@@ -33,7 +33,7 @@ import UserProfile from "../pages/Usuarios/UserProfile";
 import Help from "../pages/Help/Help";
 
 // import ReporteDiarioVentas from "../pages/Reportes/ReporteDiarioVentas";
-import { Respaldo } from "../pages/Respaldos/respaldo";
+import { Respaldo } from "../pages/Respaldos/Respaldo";
 import DetailKardex from "../pages/Kardex/DetailKardex";
 import Auditoria from "../pages/Auditoria/Auditoria";
 import ReportDay from "../pages/ReportesDia/ReportDay";

@@ -6,7 +6,7 @@ import { useAuthStore } from "../stores/authStore";
 let sessionExpiredAlert = false;
 
 export const api = axios.create({
-  baseURL: "https://p8rrjd6d-3001.brs.devtunnels.ms/api",
+  baseURL: "http://72.60.55.158:3001/api",
   timeout: 15000,
   headers: {
     "Content-Type": "application/json; charset=utf-8",
